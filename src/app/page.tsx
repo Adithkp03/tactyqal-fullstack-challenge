@@ -150,7 +150,7 @@ export default async function Home() {
       {/* Nav */}
       <header className="sticky top-0 z-40 border-b border-white/10 bg-black/60 backdrop-blur-xl">
         <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-          <a href="#top" className="text-lg font-bold text-white">
+          <a href="#top" className="font-display text-lg font-bold text-white">
             Tactyqal<span className="text-white"> Labs</span>
           </a>
           <div className="hidden items-center gap-6 text-sm text-neutral-300 md:flex">
@@ -184,7 +184,7 @@ export default async function Home() {
         </span>
         <div className="relative mx-auto max-w-6xl px-6 pb-24 pt-24 text-center">
           <p className="eyebrow">8-week 1:1 program for teen builders</p>
-          <h1 className="mx-auto mt-6 max-w-4xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-6xl">
+          <h1 className="mx-auto mt-6 max-w-4xl font-display text-4xl font-bold leading-tight tracking-tight text-white sm:text-6xl">
             Empower your kid to build the next app that{" "}
             <span className="gradient-text">impacts millions</span>
           </h1>
@@ -207,7 +207,7 @@ export default async function Home() {
               ["1000s", "Of people impacted"],
             ].map(([num, label]) => (
               <div key={label} className="card p-6">
-                <p className="text-3xl font-bold text-white">{num}</p>
+                <p className="font-display text-3xl font-bold text-white">{num}</p>
                 <p className="mt-1 text-sm text-neutral-400">{label}</p>
               </div>
             ))}
@@ -227,14 +227,14 @@ export default async function Home() {
             {stories.map((s) => (
               <div key={s.name} className="card group p-6">
                 <div
-                  className="flex h-40 items-end rounded-xl bg-cover bg-center p-4 ring-1 ring-white/15 grayscale"
+                  className="flex h-40 items-end rounded-xl bg-cover bg-center p-4 ring-1 ring-white/15 grayscale transition duration-500 group-hover:grayscale-0"
                   style={{ backgroundImage: `url(${s.img})` }}
                 >
-                  <span className="rounded-full bg-ink/70 px-3 py-1 text-xs font-medium text-neutral-200">
+                  <span className="rounded-full bg-ink/70 px-3 py-1 font-mono text-xs text-neutral-200">
                     {s.tag}
                   </span>
                 </div>
-                <h3 className="mt-5 text-lg font-semibold text-white">
+                <h3 className="mt-5 font-display text-lg font-semibold text-white">
                   {s.name}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-neutral-400">
@@ -257,13 +257,13 @@ export default async function Home() {
           <div className="mt-12 grid gap-6 md:grid-cols-4">
             {weeks.map((w, i) => (
               <div key={w.span} className="card relative p-6">
-                <p className="text-4xl font-bold text-white/20">
+                <p className="font-display text-4xl font-bold text-white/20">
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-neutral-300">
+                <p className="mt-3 font-mono text-xs uppercase tracking-wider text-neutral-300">
                   {w.span}
                 </p>
-                <h3 className="mt-2 font-semibold text-white">{w.title}</h3>
+                <h3 className="mt-2 font-display font-semibold text-white">{w.title}</h3>
                 <p className="mt-2 text-sm text-neutral-400">{w.text}</p>
               </div>
             ))}
@@ -295,7 +295,7 @@ export default async function Home() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {reasons.map((r) => (
               <div key={r.title} className="card p-6">
-                <h3 className="font-semibold text-white">{r.title}</h3>
+                <h3 className="font-display font-semibold text-white">{r.title}</h3>
                 <p className="mt-2 text-sm text-neutral-400">{r.text}</p>
               </div>
             ))}
@@ -375,20 +375,20 @@ export default async function Home() {
                 className="card group p-6 transition hover:border-white/40"
               >
                 <div
-                  className="h-28 rounded-xl bg-gradient-to-br from-white/15 to-white/5 bg-cover bg-center ring-1 ring-white/15 grayscale"
+                  className="h-28 rounded-xl bg-gradient-to-br from-white/15 to-white/5 bg-cover bg-center ring-1 ring-white/15 grayscale transition duration-500 group-hover:grayscale-0"
                   style={
                     coverFor(p.slug)
                       ? { backgroundImage: `url(${coverFor(p.slug)})` }
                       : undefined
                   }
                 />
-                <h3 className="mt-4 font-semibold text-white group-hover:text-neutral-200">
+                <h3 className="mt-4 font-display font-semibold text-white group-hover:text-neutral-200">
                   {p.title}
                 </h3>
                 <p className="mt-2 line-clamp-2 text-sm text-neutral-400">
                   {p.excerpt}
                 </p>
-                <p className="mt-3 text-xs text-neutral-500">
+                <p className="mt-3 font-mono text-xs text-neutral-500">
                   By {p.author} &bull; {p.read_minutes} min read
                 </p>
               </Link>
@@ -412,7 +412,7 @@ export default async function Home() {
           </h2>
           <div className="card mt-12 p-10">
             <p className="text-sm text-neutral-400 line-through">₹25,000</p>
-            <p className="mt-1 text-5xl font-bold text-white">₹16,000</p>
+            <p className="mt-1 font-display text-5xl font-bold text-white">₹16,000</p>
             <p className="mt-2 text-sm text-neutral-300">
               Limited time offer &mdash; only 15 spots this month
             </p>

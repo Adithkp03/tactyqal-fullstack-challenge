@@ -30,20 +30,20 @@ export default async function BlogPage() {
             className="card group p-6 transition hover:border-white/40"
           >
             <div
-              className="h-32 rounded-xl bg-gradient-to-br from-white/20 via-white/10 to-white/10 bg-cover bg-center ring-1 ring-white/15 grayscale"
+              className="h-32 rounded-xl bg-gradient-to-br from-white/20 via-white/10 to-white/10 bg-cover bg-center ring-1 ring-white/15 grayscale transition duration-500 group-hover:grayscale-0"
               style={
                 coverFor(p.slug)
                   ? { backgroundImage: `url(${coverFor(p.slug)})` }
                   : undefined
               }
             />
-            <h2 className="mt-5 text-lg font-semibold text-white group-hover:text-neutral-200">
+            <h2 className="mt-5 font-display text-lg font-semibold text-white group-hover:text-neutral-200">
               {p.title}
             </h2>
             <p className="mt-2 line-clamp-3 text-sm text-neutral-400">
               {p.excerpt}
             </p>
-            <p className="mt-4 text-xs text-neutral-500">
+            <p className="mt-4 font-mono text-xs text-neutral-500">
               By {p.author} &bull; {p.read_minutes} min read &bull;{" "}
               {p.published_at}
             </p>

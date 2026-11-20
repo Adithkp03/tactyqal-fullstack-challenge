@@ -135,7 +135,7 @@ export default function AdminPage() {
       </label>
 
       <form onSubmit={submit} className="card mt-10 space-y-4 p-6">
-        <h2 className="text-lg font-semibold text-white">
+        <h2 className="font-display text-lg font-semibold text-white">
           {editingId ? `Editing post #${editingId}` : "New post"}
         </h2>
         <input
@@ -209,7 +209,7 @@ export default function AdminPage() {
               className="card flex flex-wrap items-center justify-between gap-3 p-4"
             >
               <div>
-                <p className="font-semibold text-white">{p.title}</p>
+                <p className="font-display font-semibold text-white">{p.title}</p>
                 <p className="text-xs text-neutral-500">
                   /blog/{p.slug} &bull; {p.published_at} &bull; {p.read_minutes}{" "}
                   min

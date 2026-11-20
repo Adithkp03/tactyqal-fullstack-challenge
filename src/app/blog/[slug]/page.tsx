@@ -24,11 +24,11 @@ export default async function PostPage({
       </Link>
       {coverFor(post.slug) && (
         <div
-          className="mt-8 h-56 rounded-2xl bg-cover bg-center ring-1 ring-white/15 grayscale"
+          className="mt-8 h-56 rounded-2xl bg-cover bg-center ring-1 ring-white/15 grayscale transition duration-500 hover:grayscale-0"
           style={{ backgroundImage: `url(${coverFor(post.slug)})` }}
         />
       )}
-      <h1 className="mt-8 text-4xl font-bold tracking-tight text-white">
+      <h1 className="mt-8 font-display text-4xl font-bold tracking-tight text-white">
         {post.title}
       </h1>
       <p className="mt-4 text-sm text-neutral-500">

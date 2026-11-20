@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  @apply bg-ink text-neutral-300 antialiased;
+  @apply bg-ink font-sans text-neutral-300 antialiased;
   /* soft monochrome light sources for the glass to frost against */
   background-image:
     radial-gradient(60rem 32rem at 18% -10%, rgba(255, 255, 255, 0.08), transparent 60%),
@@ -35,24 +35,25 @@ body {
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-neutral-200 focus:outline-none focus:ring-2 focus:ring-white/40;
+  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 font-display text-sm font-semibold text-black transition hover:bg-neutral-200 focus:outline-none focus:ring-2 focus:ring-white/40;
 }
 
 .btn-ghost {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-gradient-to-br from-white/[0.10] to-white/[0.03] px-5 py-3 text-sm font-semibold text-neutral-200 backdrop-blur-md transition hover:border-white/50 hover:text-white;
+  @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-gradient-to-br from-white/[0.10] to-white/[0.03] px-5 py-3 font-display text-sm font-semibold text-neutral-200 backdrop-blur-md transition hover:border-white/50 hover:text-white;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 .eyebrow {
-  @apply text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500;
+  @apply font-mono text-xs uppercase tracking-[0.28em] text-neutral-500;
 }
 
 .section-title {
-  @apply mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl;
+  @apply mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl;
 }
 
+/* Emphasis words: serif italic with a monochrome sheen */
 .gradient-text {
-  @apply bg-gradient-to-r from-white via-neutral-300 to-neutral-500 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-white via-neutral-300 to-neutral-500 bg-clip-text font-serif italic text-transparent;
 }
 
 /* Giant backdrop word, like a product-launch hero */

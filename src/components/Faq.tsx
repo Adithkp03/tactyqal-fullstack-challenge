@@ -48,7 +48,7 @@ export default function Faq() {
             className="flex w-full items-center justify-between px-6 py-4 text-left"
             aria-expanded={open === i}
           >
-            <span className="font-medium text-white">{f.q}</span>
+            <span className="font-display font-medium text-white">{f.q}</span>
             <span
               className={`ml-4 text-neutral-300 transition-transform ${
                 open === i ? "rotate-45" : ""
