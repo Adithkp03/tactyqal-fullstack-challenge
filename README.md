@@ -22,6 +22,13 @@ Submission for the Tactyqal Labs Fullstack Developer Intern hiring challenge.
    The blog is rendered at `/blog` and `/blog/[slug]`, managed at `/admin`,
    and the redesigned homepage's blog section is served by the same backend.
 
+   Seed posts are **abbreviated samples** rebuilt from the excerpts shown on
+   the current homepage. They are not migrated articles: the existing
+   WordPress blog (tactyqal.com/blog) currently returns a critical error on
+   every page, so full text could not be retrieved. Replacing them with the
+   real articles is a one-time paste job in `/admin` once the content is
+   available.
+
 ## Stack
 
 - Next.js (App Router) + React 19 + TypeScript

@@ -10,9 +10,19 @@ import { NextRequest } from "next/server";
  */
 export function writeAuthorized(req: NextRequest): boolean {
   const token = process.env.ADMIN_TOKEN;
-  if (!token) return true;
-  const header = req.headers.get("authorization") ?? "";
-  return header === `Bearer ${token}`;
+  if (token) {
+    const header = req.headers.get("authorization") ?? "";
+    return header === `Bearer ${token}`;
+  }
+  // No token configured: fail closed in production. Open writes exist only
+  // for local development (next dev, NODE_ENV=development).
+  if (process.env.NODE_ENV === "production") {
+    console.error(
+      "ADMIN_TOKEN is not set: refusing blog write requests in production."
+    );
+    return false;
+  }
+  return true;
 }
 
 export interface PostInput {

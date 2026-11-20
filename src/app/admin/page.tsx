@@ -118,6 +118,11 @@ export default function AdminPage() {
         Create, edit and delete blog posts through the new CRUD API
         (<code>GET/POST /api/posts</code>, <code>GET/PUT/DELETE /api/posts/:id</code>).
       </p>
+      <p className="mt-3 max-w-2xl text-xs text-slate-500">
+        Seed posts are abbreviated samples rebuilt from the excerpts on the
+        current homepage; the existing WordPress blog is offline (critical
+        error), so full-text migration was not possible.
+      </p>
       <label className="mt-6 block max-w-md text-sm text-slate-400">
         Admin token (required when the site is deployed)
         <input
