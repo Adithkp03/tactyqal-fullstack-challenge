@@ -24,7 +24,7 @@ export default async function PostPage({
       </Link>
       {coverFor(post.slug) && (
         <div
-          className="mt-8 h-56 rounded-2xl bg-cover bg-center grayscale"
+          className="mt-8 h-56 rounded-2xl bg-cover bg-center ring-1 ring-white/15 grayscale"
           style={{ backgroundImage: `url(${coverFor(post.slug)})` }}
         />
       )}

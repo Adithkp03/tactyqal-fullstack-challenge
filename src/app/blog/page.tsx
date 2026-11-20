@@ -30,7 +30,7 @@ export default async function BlogPage() {
             className="card group p-6 transition hover:border-white/40"
           >
             <div
-              className="h-32 rounded-xl bg-gradient-to-br from-white/20 via-white/10 to-white/10 bg-cover bg-center grayscale transition duration-300 group-hover:grayscale-0"
+              className="h-32 rounded-xl bg-gradient-to-br from-white/20 via-white/10 to-white/10 bg-cover bg-center ring-1 ring-white/15 grayscale"
               style={
                 coverFor(p.slug)
                   ? { backgroundImage: `url(${coverFor(p.slug)})` }

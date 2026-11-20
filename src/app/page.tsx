@@ -227,7 +227,7 @@ export default async function Home() {
             {stories.map((s) => (
               <div key={s.name} className="card group p-6">
                 <div
-                  className="flex h-40 items-end rounded-xl bg-cover bg-center p-4 grayscale transition duration-300 group-hover:grayscale-0"
+                  className="flex h-40 items-end rounded-xl bg-cover bg-center p-4 ring-1 ring-white/15 grayscale"
                   style={{ backgroundImage: `url(${s.img})` }}
                 >
                   <span className="rounded-full bg-ink/70 px-3 py-1 text-xs font-medium text-neutral-200">
@@ -375,7 +375,7 @@ export default async function Home() {
                 className="card group p-6 transition hover:border-white/40"
               >
                 <div
-                  className="h-28 rounded-xl bg-gradient-to-br from-white/15 to-white/5 bg-cover bg-center grayscale transition duration-300 group-hover:grayscale-0"
+                  className="h-28 rounded-xl bg-gradient-to-br from-white/15 to-white/5 bg-cover bg-center ring-1 ring-white/15 grayscale"
                   style={
                     coverFor(p.slug)
                       ? { backgroundImage: `url(${coverFor(p.slug)})` }
