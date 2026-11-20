@@ -27,6 +27,20 @@ export default function AdminPage() {
   const [editingId, setEditingId] = useState<number | null>(null);
   const [status, setStatus] = useState<string>("");
   const [loading, setLoading] = useState(true);
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    setToken(localStorage.getItem("adminToken") ?? "");
+  }, []);
+
+  function saveToken(v: string) {
+    setToken(v);
+    localStorage.setItem("adminToken", v);
+  }
+
+  function authHeaders(): Record<string, string> {
+    return token ? { Authorization: `Bearer ${token}` } : {};
+  }
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -47,7 +61,7 @@ export default function AdminPage() {
       editingId ? `/api/posts/${editingId}` : "/api/posts",
       {
         method: editingId ? "PUT" : "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...authHeaders() },
         body: JSON.stringify(form),
       }
     );
@@ -65,8 +79,17 @@ export default function AdminPage() {
   async function remove(id: number) {
     if (!confirm("Delete this post?")) return;
     setStatus("Deleting...");
-    const res = await fetch(`/api/posts/${id}`, { method: "DELETE" });
-    setStatus(res.ok ? "Post deleted." : "Delete failed.");
+    const res = await fetch(`/api/posts/${id}`, {
+      method: "DELETE",
+      headers: authHeaders(),
+    });
+    setStatus(
+      res.ok
+        ? "Post deleted."
+        : res.status === 401
+          ? "Unauthorized — check the admin token."
+          : "Delete failed."
+    );
     await load();
   }
 
@@ -95,6 +118,16 @@ export default function AdminPage() {
         Create, edit and delete blog posts through the new CRUD API
         (<code>GET/POST /api/posts</code>, <code>GET/PUT/DELETE /api/posts/:id</code>).
       </p>
+      <label className="mt-6 block max-w-md text-sm text-slate-400">
+        Admin token (required when the site is deployed)
+        <input
+          type="password"
+          value={token}
+          onChange={(e) => saveToken(e.target.value)}
+          placeholder="ADMIN_TOKEN"
+          className="mt-2 w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-indigo-400 focus:outline-none"
+        />
+      </label>
 
       <form onSubmit={submit} className="card mt-10 space-y-4 p-6">
         <h2 className="text-lg font-semibold text-white">

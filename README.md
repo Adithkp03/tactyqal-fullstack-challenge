@@ -41,7 +41,12 @@ npm run dev
 ```
 
 Production: set `DATABASE_URL` to a Neon Postgres connection string and
-deploy to Vercel. No other configuration is required.
+`ADMIN_TOKEN` to a long random string, then deploy to Vercel. Write API
+calls (`POST /api/posts`, `PUT/DELETE /api/posts/:id`) require
+`Authorization: Bearer <ADMIN_TOKEN>`; the admin UI at `/admin` has a token
+field for this. Reads stay public. With no `ADMIN_TOKEN` set (local
+development), writes are open so the demo runs with zero setup. See
+`.env.example`.
 
 ## Notes
 

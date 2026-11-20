@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { coverFor } from "@/lib/blogImages";
 import { getPostBySlug } from "@/lib/posts";
 
 export const dynamic = "force-dynamic";
@@ -21,6 +22,12 @@ export default async function PostPage({
       >
         &larr; All posts
       </Link>
+      {coverFor(post.slug) && (
+        <div
+          className="mt-8 h-56 rounded-2xl bg-cover bg-center"
+          style={{ backgroundImage: `url(${coverFor(post.slug)})` }}
+        />
+      )}
       <h1 className="mt-8 text-4xl font-bold tracking-tight text-white">
         {post.title}
       </h1>

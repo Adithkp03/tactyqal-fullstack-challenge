@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { validatePostInput, writeAuthorized } from "@/lib/adminAuth";
 import { deletePost, getPostById, updatePost } from "@/lib/posts";
 
 export const dynamic = "force-dynamic";
@@ -20,10 +21,17 @@ export async function GET(_req: NextRequest, ctx: Ctx) {
 }
 
 export async function PUT(req: NextRequest, ctx: Ctx) {
+  if (!writeAuthorized(req)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   const id = await parseId(ctx);
   if (!id) return NextResponse.json({ error: "Invalid id" }, { status: 400 });
   try {
     const body = await req.json();
+    const invalid = validatePostInput(body, true);
+    if (invalid) {
+      return NextResponse.json({ error: invalid }, { status: 400 });
+    }
     const post = await updatePost(id, body ?? {});
     if (!post)
       return NextResponse.json({ error: "Not found" }, { status: 404 });
@@ -36,7 +44,10 @@ export async function PUT(req: NextRequest, ctx: Ctx) {
   }
 }
 
-export async function DELETE(_req: NextRequest, ctx: Ctx) {
+export async function DELETE(req: NextRequest, ctx: Ctx) {
+  if (!writeAuthorized(req)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   const id = await parseId(ctx);
   if (!id) return NextResponse.json({ error: "Invalid id" }, { status: 400 });
   const ok = await deletePost(id);

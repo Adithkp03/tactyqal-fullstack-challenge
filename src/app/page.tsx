@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { listPosts } from "@/lib/posts";
+import { coverFor } from "@/lib/blogImages";
 import Faq from "@/components/Faq";
 import MobileNav from "@/components/MobileNav";
 
@@ -9,31 +10,37 @@ const stories = [
   {
     name: "KrishiDrishti",
     tag: "AgriTech / AI",
+    img: "/images/krishidrishti.jpg",
     text: "AI-powered soil analysis & crop recommendation app that can impact millions of local farmers in India.",
   },
   {
     name: "One Last Chapter",
     tag: "Subscription",
+    img: "/images/olc.jpg",
     text: "Book subscription service for kids, started by a 13-year-old and generating INR 1,00,000 monthly revenue.",
   },
   {
     name: "Elenor Vegan Handbags",
     tag: "E-commerce",
+    img: "/images/elenor.jpg",
     text: "Corporate gifting platform selling vegan handbags, started by a 16-year-old. INR 9,000 in the first week.",
   },
   {
     name: "Paws of Promise",
     tag: "Marketplace",
+    img: "/images/paws.jpg",
     text: "Virtual pet adoption app connecting pet lovers with pets from shelters.",
   },
   {
     name: "AudioNova",
     tag: "AI Music",
+    img: "/images/audionova.jpg",
     text: "AI music and video production company built by a student founder.",
   },
   {
     name: "Converza",
     tag: "EdTech",
+    img: "/images/converza.jpg",
     text: "Spanish learning app featuring Luna, a friendly AI language-learning bot.",
   },
 ];
@@ -212,7 +219,10 @@ export default async function Home() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {stories.map((s) => (
               <div key={s.name} className="card p-6">
-                <div className="flex h-32 items-end rounded-xl bg-gradient-to-br from-indigo-500/30 via-violet-500/20 to-sky-500/20 p-4">
+                <div
+                  className="flex h-40 items-end rounded-xl bg-cover bg-center p-4"
+                  style={{ backgroundImage: `url(${s.img})` }}
+                >
                   <span className="rounded-full bg-ink/70 px-3 py-1 text-xs font-medium text-indigo-200">
                     {s.tag}
                   </span>
@@ -326,8 +336,16 @@ export default async function Home() {
                 <blockquote className="text-slate-300">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
-                <figcaption className="mt-4 text-sm font-medium text-indigo-300">
-                  {t.name}
+                <figcaption className="mt-4 flex items-center gap-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-500/20 text-xs font-bold text-indigo-300">
+                    {t.name
+                      .split(" ")
+                      .map((w) => w[0])
+                      .join("")}
+                  </span>
+                  <span className="text-sm font-medium text-indigo-300">
+                    {t.name}
+                  </span>
                 </figcaption>
               </figure>
             ))}
@@ -349,7 +367,14 @@ export default async function Home() {
                 href={`/blog/${p.slug}`}
                 className="card group p-6 transition hover:border-indigo-400/40"
               >
-                <div className="h-24 rounded-xl bg-gradient-to-br from-indigo-500/30 to-sky-500/20" />
+                <div
+                  className="h-28 rounded-xl bg-gradient-to-br from-indigo-500/30 to-sky-500/20 bg-cover bg-center"
+                  style={
+                    coverFor(p.slug)
+                      ? { backgroundImage: `url(${coverFor(p.slug)})` }
+                      : undefined
+                  }
+                />
                 <h3 className="mt-4 font-semibold text-white group-hover:text-indigo-200">
                   {p.title}
                 </h3>

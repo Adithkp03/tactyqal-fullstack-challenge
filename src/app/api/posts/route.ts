@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { validatePostInput, writeAuthorized } from "@/lib/adminAuth";
 import { createPost, listPosts } from "@/lib/posts";
 
 export const dynamic = "force-dynamic";
@@ -16,13 +17,14 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
+  if (!writeAuthorized(req)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   try {
     const body = await req.json();
-    if (!body?.title || typeof body.title !== "string") {
-      return NextResponse.json(
-        { error: "title is required" },
-        { status: 400 }
-      );
+    const invalid = validatePostInput(body, false);
+    if (invalid) {
+      return NextResponse.json({ error: invalid }, { status: 400 });
     }
     const post = await createPost({
       title: body.title,

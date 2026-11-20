@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { listPosts } from "@/lib/posts";
+import { coverFor } from "@/lib/blogImages";
 
 export const dynamic = "force-dynamic";
 
@@ -28,7 +29,14 @@ export default async function BlogPage() {
             href={`/blog/${p.slug}`}
             className="card group p-6 transition hover:border-indigo-400/40"
           >
-            <div className="h-28 rounded-xl bg-gradient-to-br from-indigo-500/40 via-violet-500/30 to-sky-500/30" />
+            <div
+              className="h-32 rounded-xl bg-gradient-to-br from-indigo-500/40 via-violet-500/30 to-sky-500/30 bg-cover bg-center"
+              style={
+                coverFor(p.slug)
+                  ? { backgroundImage: `url(${coverFor(p.slug)})` }
+                  : undefined
+              }
+            />
             <h2 className="mt-5 text-lg font-semibold text-white group-hover:text-indigo-200">
               {p.title}
             </h2>

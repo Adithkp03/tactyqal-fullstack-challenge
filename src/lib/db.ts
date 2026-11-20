@@ -153,15 +153,20 @@ async function sqliteQuery<T = Record<string, unknown>>(
     // to match placeholder appearance order (better-sqlite3 binds strictly
     // positionally).
     const ordered: unknown[] = [];
+    let replaced = 0;
     const converted = sql.replace(/\$(\d+)/g, (_m, n) => {
       ordered.push(params[Number(n) - 1]);
+      replaced++;
       return "?";
     });
+    // Statements written with native ? placeholders (e.g. seed inserts)
+    // keep their original params untouched.
+    const bound = replaced > 0 ? ordered : params;
     const trimmed = converted.trim().toUpperCase();
     if (trimmed.startsWith("SELECT") || trimmed.includes("RETURNING")) {
-      return db.prepare(converted).all(...(ordered as never[])) as T[];
+      return db.prepare(converted).all(...(bound as never[])) as T[];
     }
-    db.prepare(converted).run(...(ordered as never[]));
+    db.prepare(converted).run(...(bound as never[]));
     return [] as T[];
   } finally {
     db.close();
