@@ -148,12 +148,12 @@ export default async function Home() {
   return (
     <main className="min-h-screen">
       {/* Nav */}
-      <header className="sticky top-0 z-40 border-b border-line bg-ink/80 backdrop-blur">
+      <header className="sticky top-0 z-40 border-b border-white/10 bg-black/60 backdrop-blur-xl">
         <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <a href="#top" className="text-lg font-bold text-white">
-            Tactyqal<span className="text-indigo-400"> Labs</span>
+            Tactyqal<span className="text-white"> Labs</span>
           </a>
-          <div className="hidden items-center gap-6 text-sm text-slate-300 md:flex">
+          <div className="hidden items-center gap-6 text-sm text-neutral-300 md:flex">
             <a href="#stories" className="hover:text-white">Success Stories</a>
             <a href="#program" className="hover:text-white">Program</a>
             <a href="#why" className="hover:text-white">Why Us</a>
@@ -163,7 +163,7 @@ export default async function Home() {
             <a href="#faq" className="hover:text-white">FAQ</a>
             <a
               href="#contact"
-              className="rounded-lg bg-indigo-500 px-4 py-2 font-semibold text-white hover:bg-indigo-400"
+              className="rounded-lg bg-white px-4 py-2 font-semibold text-black hover:bg-neutral-200"
             >
               Book Free Consultation
             </a>
@@ -174,14 +174,21 @@ export default async function Home() {
 
       {/* Hero */}
       <section id="top" className="relative overflow-hidden">
-        <div className="pointer-events-none absolute -top-40 left-1/2 h-96 w-[42rem] -translate-x-1/2 rounded-full bg-indigo-600/20 blur-3xl" />
-        <div className="mx-auto max-w-6xl px-6 pb-24 pt-24 text-center">
+        <div className="dot-grid pointer-events-none absolute inset-0 opacity-60" />
+        <div className="pointer-events-none absolute -top-40 left-1/2 h-96 w-[42rem] -translate-x-1/2 rounded-full bg-white/[0.07] blur-3xl" />
+        <span
+          aria-hidden
+          className="hero-word absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[22vw] leading-none"
+        >
+          TACTYQAL
+        </span>
+        <div className="relative mx-auto max-w-6xl px-6 pb-24 pt-24 text-center">
           <p className="eyebrow">8-week 1:1 program for teen builders</p>
           <h1 className="mx-auto mt-6 max-w-4xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-6xl">
             Empower your kid to build the next app that{" "}
             <span className="gradient-text">impacts millions</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-neutral-400">
             1:1 mentoring from idea to full-stack app. No coding needed.
             University admissions edge, grants and media coverage included.
           </p>
@@ -201,7 +208,7 @@ export default async function Home() {
             ].map(([num, label]) => (
               <div key={label} className="card p-6">
                 <p className="text-3xl font-bold text-white">{num}</p>
-                <p className="mt-1 text-sm text-slate-400">{label}</p>
+                <p className="mt-1 text-sm text-neutral-400">{label}</p>
               </div>
             ))}
           </div>
@@ -218,19 +225,19 @@ export default async function Home() {
           </h2>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {stories.map((s) => (
-              <div key={s.name} className="card p-6">
+              <div key={s.name} className="card group p-6">
                 <div
-                  className="flex h-40 items-end rounded-xl bg-cover bg-center p-4"
+                  className="flex h-40 items-end rounded-xl bg-cover bg-center p-4 grayscale transition duration-300 group-hover:grayscale-0"
                   style={{ backgroundImage: `url(${s.img})` }}
                 >
-                  <span className="rounded-full bg-ink/70 px-3 py-1 text-xs font-medium text-indigo-200">
+                  <span className="rounded-full bg-ink/70 px-3 py-1 text-xs font-medium text-neutral-200">
                     {s.tag}
                   </span>
                 </div>
                 <h3 className="mt-5 text-lg font-semibold text-white">
                   {s.name}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-400">
+                <p className="mt-2 text-sm leading-relaxed text-neutral-400">
                   {s.text}
                 </p>
               </div>
@@ -250,27 +257,27 @@ export default async function Home() {
           <div className="mt-12 grid gap-6 md:grid-cols-4">
             {weeks.map((w, i) => (
               <div key={w.span} className="card relative p-6">
-                <p className="text-4xl font-bold text-indigo-500/40">
+                <p className="text-4xl font-bold text-white/20">
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-indigo-300">
+                <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-neutral-300">
                   {w.span}
                 </p>
                 <h3 className="mt-2 font-semibold text-white">{w.title}</h3>
-                <p className="mt-2 text-sm text-slate-400">{w.text}</p>
+                <p className="mt-2 text-sm text-neutral-400">{w.text}</p>
               </div>
             ))}
           </div>
           <blockquote className="card mx-auto mt-16 max-w-3xl p-8 text-center">
-            <p className="text-xl italic text-slate-200">
+            <p className="text-xl italic text-neutral-200">
               &ldquo;Learn to sell. Learn to build. If you can do both, you will
               be unstoppable.&rdquo;
             </p>
-            <footer className="mt-4 text-sm text-slate-500">
+            <footer className="mt-4 text-sm text-neutral-500">
               &mdash; Naval Ravikant
             </footer>
           </blockquote>
-          <p className="mt-10 text-center text-sm text-slate-400">
+          <p className="mt-10 text-center text-sm text-neutral-400">
             Personal 1:1 live sessions &bull; 1 hour each &bull; Expert guidance
             on admissions, revenue, recognition and grants
           </p>
@@ -289,7 +296,7 @@ export default async function Home() {
             {reasons.map((r) => (
               <div key={r.title} className="card p-6">
                 <h3 className="font-semibold text-white">{r.title}</h3>
-                <p className="mt-2 text-sm text-slate-400">{r.text}</p>
+                <p className="mt-2 text-sm text-neutral-400">{r.text}</p>
               </div>
             ))}
           </div>
@@ -308,9 +315,9 @@ export default async function Home() {
             {tools.map((t) => (
               <div
                 key={t}
-                className="card flex items-center gap-3 p-5 text-sm text-slate-200 transition hover:border-indigo-400/40"
+                className="card flex items-center gap-3 p-5 text-sm text-neutral-200 transition hover:border-white/40"
               >
-                <span className="h-2 w-2 shrink-0 rounded-full bg-indigo-400" />
+                <span className="h-2 w-2 shrink-0 rounded-full bg-white/70" />
                 {t}
               </div>
             ))}
@@ -333,17 +340,17 @@ export default async function Home() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((t) => (
               <figure key={t.name} className="card p-6">
-                <blockquote className="text-slate-300">
+                <blockquote className="text-neutral-300">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
                 <figcaption className="mt-4 flex items-center gap-3">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-500/20 text-xs font-bold text-indigo-300">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-xs font-bold text-neutral-300">
                     {t.name
                       .split(" ")
                       .map((w) => w[0])
                       .join("")}
                   </span>
-                  <span className="text-sm font-medium text-indigo-300">
+                  <span className="text-sm font-medium text-neutral-300">
                     {t.name}
                   </span>
                 </figcaption>
@@ -365,23 +372,23 @@ export default async function Home() {
               <Link
                 key={p.id}
                 href={`/blog/${p.slug}`}
-                className="card group p-6 transition hover:border-indigo-400/40"
+                className="card group p-6 transition hover:border-white/40"
               >
                 <div
-                  className="h-28 rounded-xl bg-gradient-to-br from-indigo-500/30 to-sky-500/20 bg-cover bg-center"
+                  className="h-28 rounded-xl bg-gradient-to-br from-white/15 to-white/5 bg-cover bg-center grayscale transition duration-300 group-hover:grayscale-0"
                   style={
                     coverFor(p.slug)
                       ? { backgroundImage: `url(${coverFor(p.slug)})` }
                       : undefined
                   }
                 />
-                <h3 className="mt-4 font-semibold text-white group-hover:text-indigo-200">
+                <h3 className="mt-4 font-semibold text-white group-hover:text-neutral-200">
                   {p.title}
                 </h3>
-                <p className="mt-2 line-clamp-2 text-sm text-slate-400">
+                <p className="mt-2 line-clamp-2 text-sm text-neutral-400">
                   {p.excerpt}
                 </p>
-                <p className="mt-3 text-xs text-slate-500">
+                <p className="mt-3 text-xs text-neutral-500">
                   By {p.author} &bull; {p.read_minutes} min read
                 </p>
               </Link>
@@ -404,12 +411,12 @@ export default async function Home() {
             <span className="gradient-text">entrepreneurial journey</span>
           </h2>
           <div className="card mt-12 p-10">
-            <p className="text-sm text-slate-400 line-through">₹25,000</p>
+            <p className="text-sm text-neutral-400 line-through">₹25,000</p>
             <p className="mt-1 text-5xl font-bold text-white">₹16,000</p>
-            <p className="mt-2 text-sm text-indigo-300">
+            <p className="mt-2 text-sm text-neutral-300">
               Limited time offer &mdash; only 15 spots this month
             </p>
-            <ul className="mx-auto mt-8 max-w-sm space-y-3 text-left text-sm text-slate-300">
+            <ul className="mx-auto mt-8 max-w-sm space-y-3 text-left text-sm text-neutral-300">
               {[
                 "8 weeks of 1:1 mentoring",
                 "Full-stack app development",
@@ -420,7 +427,7 @@ export default async function Home() {
                 "Results guaranteed or money back",
               ].map((f) => (
                 <li key={f} className="flex items-start gap-3">
-                  <span className="mt-0.5 text-indigo-400">&#10003;</span>
+                  <span className="mt-0.5 text-white">&#10003;</span>
                   {f}
                 </li>
               ))}
@@ -453,29 +460,29 @@ export default async function Home() {
               Ready to start your teen&apos;s{" "}
               <span className="gradient-text">success story?</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-slate-400">
+            <p className="mx-auto mt-4 max-w-xl text-neutral-400">
               Reach out to our dedicated team for any inquiries, assistance or
               information you need.
             </p>
             <div className="mt-8 grid gap-4 text-sm sm:grid-cols-3">
               <div className="rounded-xl border border-line p-4">
-                <p className="text-slate-500">Email</p>
+                <p className="text-neutral-500">Email</p>
                 <p className="mt-1 font-medium text-white">
                   tactyqal.labs@gmail.com
                 </p>
               </div>
               <div className="rounded-xl border border-line p-4">
-                <p className="text-slate-500">Phone</p>
+                <p className="text-neutral-500">Phone</p>
                 <p className="mt-1 font-medium text-white">+91-98047-72106</p>
               </div>
               <div className="rounded-xl border border-line p-4">
-                <p className="text-slate-500">Hours</p>
+                <p className="text-neutral-500">Hours</p>
                 <p className="mt-1 font-medium text-white">
                   Mon&ndash;Sat, 9am&ndash;7pm
                 </p>
               </div>
             </div>
-            <p className="mt-4 text-xs text-slate-500">
+            <p className="mt-4 text-xs text-neutral-500">
               Response time: within 24 hours
             </p>
             <a
@@ -488,7 +495,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-line py-10 text-center text-sm text-slate-500">
+      <footer className="border-t border-line py-10 text-center text-sm text-neutral-500">
         <p>
           Tactyqal Labs &mdash; homepage redesign concept, built for the
           Fullstack Developer Intern hire-a-thon.

@@ -11,27 +11,29 @@ html {
 }
 
 body {
-  @apply bg-ink text-slate-200 antialiased;
+  @apply bg-ink text-neutral-300 antialiased;
 }
 
 ::selection {
-  background: rgba(129, 140, 248, 0.35);
+  background: #ffffff;
+  color: #000000;
 }
 
+/* Glassmorphism, strictly black & white */
 .card {
-  @apply rounded-2xl border border-line bg-panel/70 backdrop-blur;
+  @apply rounded-2xl border border-white/10 bg-white/[0.05] backdrop-blur-xl;
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-300;
+  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-neutral-200 focus:outline-none focus:ring-2 focus:ring-white/40;
 }
 
 .btn-ghost {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-indigo-400/50 hover:text-white;
+  @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-neutral-200 backdrop-blur-md transition hover:border-white/40 hover:text-white;
 }
 
 .eyebrow {
-  @apply text-xs font-semibold uppercase tracking-[0.2em] text-indigo-300;
+  @apply text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500;
 }
 
 .section-title {
@@ -39,5 +41,16 @@ body {
 }
 
 .gradient-text {
-  @apply bg-gradient-to-r from-indigo-300 via-violet-300 to-sky-300 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-white via-neutral-300 to-neutral-500 bg-clip-text text-transparent;
+}
+
+/* Giant backdrop word, like a product-launch hero */
+.hero-word {
+  @apply pointer-events-none select-none font-black tracking-tight text-white/[0.05];
+}
+
+/* Subtle dot texture for hero */
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 26px 26px;
 }

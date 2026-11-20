@@ -50,7 +50,7 @@ export default function Faq() {
           >
             <span className="font-medium text-white">{f.q}</span>
             <span
-              className={`ml-4 text-indigo-300 transition-transform ${
+              className={`ml-4 text-neutral-300 transition-transform ${
                 open === i ? "rotate-45" : ""
               }`}
             >
@@ -58,7 +58,7 @@ export default function Faq() {
             </span>
           </button>
           {open === i && (
-            <p className="px-6 pb-5 text-sm leading-relaxed text-slate-400">
+            <p className="px-6 pb-5 text-sm leading-relaxed text-neutral-400">
               {f.a}
             </p>
           )}

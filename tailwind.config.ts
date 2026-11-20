@@ -5,9 +5,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0b1020",
-        panel: "#111832",
-        line: "rgba(148, 163, 253, 0.14)",
+        ink: "#000000",
+        panel: "#0a0a0a",
+        line: "rgba(255, 255, 255, 0.12)",
       },
       fontFamily: {
         sans: [

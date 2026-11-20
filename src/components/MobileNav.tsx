@@ -20,7 +20,7 @@ export default function MobileNav() {
       <button
         onClick={() => setOpen(!open)}
         aria-label="Toggle menu"
-        className="rounded-lg border border-line p-2 text-slate-300"
+        className="rounded-lg border border-line p-2 text-neutral-300"
       >
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
           <path
@@ -32,14 +32,14 @@ export default function MobileNav() {
         </svg>
       </button>
       {open && (
-        <div className="absolute inset-x-0 top-16 z-50 border-b border-line bg-ink/95 px-6 py-4 backdrop-blur">
+        <div className="absolute inset-x-0 top-16 z-50 border-b border-white/10 bg-black/90 px-6 py-4 backdrop-blur-xl">
           <div className="flex flex-col gap-3">
             {links.map(([label, href]) => (
               <a
                 key={href}
                 href={href}
                 onClick={() => setOpen(false)}
-                className="text-sm text-slate-300 hover:text-white"
+                className="text-sm text-neutral-300 hover:text-white"
               >
                 {label}
               </a>

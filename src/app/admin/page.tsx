@@ -107,30 +107,30 @@ export default function AdminPage() {
 
   return (
     <main className="mx-auto min-h-screen max-w-5xl px-6 py-16">
-      <a href="/" className="text-sm text-indigo-300 hover:text-indigo-200">
+      <a href="/" className="text-sm text-neutral-300 hover:text-neutral-200">
         &larr; Back to home
       </a>
       <p className="eyebrow mt-10">Blog admin</p>
       <h1 className="section-title">
         Manage <span className="gradient-text">posts</span>
       </h1>
-      <p className="mt-4 max-w-2xl text-slate-400">
+      <p className="mt-4 max-w-2xl text-neutral-400">
         Create, edit and delete blog posts through the new CRUD API
         (<code>GET/POST /api/posts</code>, <code>GET/PUT/DELETE /api/posts/:id</code>).
       </p>
-      <p className="mt-3 max-w-2xl text-xs text-slate-500">
+      <p className="mt-3 max-w-2xl text-xs text-neutral-500">
         Seed posts are abbreviated samples rebuilt from the excerpts on the
         current homepage; the existing WordPress blog is offline (critical
         error), so full-text migration was not possible.
       </p>
-      <label className="mt-6 block max-w-md text-sm text-slate-400">
+      <label className="mt-6 block max-w-md text-sm text-neutral-400">
         Admin token (required when the site is deployed)
         <input
           type="password"
           value={token}
           onChange={(e) => saveToken(e.target.value)}
           placeholder="ADMIN_TOKEN"
-          className="mt-2 w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-indigo-400 focus:outline-none"
+          className="mt-2 w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-white/60 focus:outline-none"
         />
       </label>
 
@@ -143,30 +143,30 @@ export default function AdminPage() {
           placeholder="Title"
           value={form.title}
           onChange={(e) => setForm({ ...form, title: e.target.value })}
-          className="w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-indigo-400 focus:outline-none"
+          className="w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-white/60 focus:outline-none"
         />
         <textarea
           placeholder="Excerpt"
           rows={2}
           value={form.excerpt}
           onChange={(e) => setForm({ ...form, excerpt: e.target.value })}
-          className="w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-indigo-400 focus:outline-none"
+          className="w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-white/60 focus:outline-none"
         />
         <textarea
           placeholder="Content"
           rows={6}
           value={form.content}
           onChange={(e) => setForm({ ...form, content: e.target.value })}
-          className="w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-indigo-400 focus:outline-none"
+          className="w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-white/60 focus:outline-none"
         />
         <div className="flex flex-wrap gap-4">
           <input
             placeholder="Author"
             value={form.author}
             onChange={(e) => setForm({ ...form, author: e.target.value })}
-            className="rounded-lg border border-line bg-ink px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-indigo-400 focus:outline-none"
+            className="rounded-lg border border-line bg-ink px-4 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-white/60 focus:outline-none"
           />
-          <label className="flex items-center gap-2 text-sm text-slate-400">
+          <label className="flex items-center gap-2 text-sm text-neutral-400">
             Read minutes
             <input
               type="number"
@@ -175,7 +175,7 @@ export default function AdminPage() {
               onChange={(e) =>
                 setForm({ ...form, read_minutes: Number(e.target.value) })
               }
-              className="w-20 rounded-lg border border-line bg-ink px-3 py-2.5 text-sm text-white focus:border-indigo-400 focus:outline-none"
+              className="w-20 rounded-lg border border-line bg-ink px-3 py-2.5 text-sm text-white focus:border-white/60 focus:outline-none"
             />
           </label>
         </div>
@@ -195,13 +195,13 @@ export default function AdminPage() {
               Cancel edit
             </button>
           )}
-          <span className="text-sm text-slate-400">{status}</span>
+          <span className="text-sm text-neutral-400">{status}</span>
         </div>
       </form>
 
       <div className="mt-10 space-y-3">
         {loading ? (
-          <p className="text-slate-500">Loading posts...</p>
+          <p className="text-neutral-500">Loading posts...</p>
         ) : (
           posts.map((p) => (
             <div
@@ -210,7 +210,7 @@ export default function AdminPage() {
             >
               <div>
                 <p className="font-semibold text-white">{p.title}</p>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-neutral-500">
                   /blog/{p.slug} &bull; {p.published_at} &bull; {p.read_minutes}{" "}
                   min
                 </p>
@@ -218,19 +218,19 @@ export default function AdminPage() {
               <div className="flex gap-2">
                 <a
                   href={`/blog/${p.slug}`}
-                  className="rounded-lg border border-line px-3 py-1.5 text-xs text-slate-300 hover:border-indigo-400/50"
+                  className="rounded-lg border border-line px-3 py-1.5 text-xs text-neutral-300 hover:border-white/40"
                 >
                   View
                 </a>
                 <button
                   onClick={() => startEdit(p)}
-                  className="rounded-lg border border-line px-3 py-1.5 text-xs text-slate-300 hover:border-indigo-400/50"
+                  className="rounded-lg border border-line px-3 py-1.5 text-xs text-neutral-300 hover:border-white/40"
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => remove(p.id)}
-                  className="rounded-lg border border-rose-500/30 px-3 py-1.5 text-xs text-rose-300 hover:border-rose-400/60"
+                  className="rounded-lg border border-white/20 px-3 py-1.5 text-xs text-white hover:border-white/50"
                 >
                   Delete
                 </button>
